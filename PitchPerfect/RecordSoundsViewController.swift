@@ -19,8 +19,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // disable stop recording button by default
-        stopRecordingButton.isEnabled = false
+        // set UI to not recodring after start-up
+        configureUI(recording: false)
         
         // make sure image buttons are scaled proberly
         recordButton.imageView?.contentMode = .scaleAspectFit
@@ -32,9 +32,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(_ sender: Any) {
-        recordingLabel.text = "Recording in progress"
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
+        configureUI(recording: true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -52,20 +50,26 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func stopRecording(_ sender: Any) {
-        recordingLabel.text = "Tab to Record"
-        stopRecordingButton.isEnabled = false
-        recordButton.isEnabled = true
+        configureUI(recording: false)
         
         audioRecorder.stop()
         let session = AVAudioSession.sharedInstance()
         try! session.setActive(false)
     }
     
+    func configureUI(recording flagRecording: Bool) {
+        recordingLabel.text = flagRecording ? "Recording in progress" : "Tap to Record"
+        stopRecordingButton.isEnabled = flagRecording
+        recordButton.isEnabled = !flagRecording
+    }
+    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
-            print("recording was not successfully stored on the devices")
+            let alert = UIAlertController(title: title, message: "Recording was not successfully stored on the devices", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
