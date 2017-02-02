@@ -23,39 +23,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xym-b5-AuY">
-                                <rect key="frame" x="83" y="207" width="155" height="155"/>
-                                <state key="normal" image="Record"/>
-                                <connections>
-                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRU-8X-qDf"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tab to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cd-li-BUj">
-                                <rect key="frame" x="107" y="370" width="107" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoM-8i-u5g">
-                                <rect key="frame" x="123.5" y="409" width="75" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="YoM-8i-u5g" secondAttribute="height" multiplier="1:1" id="CEh-I5-5Qk"/>
-                                    <constraint firstAttribute="width" constant="75" id="eGY-0g-V5n"/>
-                                </constraints>
-                                <state key="normal" image="Stop"/>
-                                <connections>
-                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Kg-gA-JZx"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rQl-gt-i4i">
+                                <rect key="frame" x="16" y="114" width="288" height="404"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xym-b5-AuY">
+                                        <rect key="frame" x="66.5" y="0.0" width="155" height="155"/>
+                                        <state key="normal" image="Record"/>
+                                        <connections>
+                                            <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRU-8X-qDf"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tab to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cd-li-BUj">
+                                        <rect key="frame" x="90.5" y="232" width="107" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoM-8i-u5g">
+                                        <rect key="frame" x="106.5" y="329" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YoM-8i-u5g" secondAttribute="height" multiplier="1:1" id="CEh-I5-5Qk"/>
+                                            <constraint firstAttribute="width" constant="75" id="eGY-0g-V5n"/>
+                                        </constraints>
+                                        <state key="normal" image="Stop"/>
+                                        <connections>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Kg-gA-JZx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YoM-8i-u5g" firstAttribute="top" secondItem="Xym-b5-AuY" secondAttribute="bottom" constant="47" id="5Bf-dp-PtC"/>
-                            <constraint firstItem="Xym-b5-AuY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="68j-Kj-CpL"/>
-                            <constraint firstItem="Xym-b5-AuY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bDl-S7-WrI"/>
-                            <constraint firstItem="8cd-li-BUj" firstAttribute="centerX" secondItem="Xym-b5-AuY" secondAttribute="centerX" id="knG-zP-R84"/>
-                            <constraint firstItem="YoM-8i-u5g" firstAttribute="centerX" secondItem="Xym-b5-AuY" secondAttribute="centerX" id="phQ-dU-AZv"/>
-                            <constraint firstItem="8cd-li-BUj" firstAttribute="top" secondItem="Xym-b5-AuY" secondAttribute="bottom" constant="8" id="xLm-8k-CbP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rQl-gt-i4i" secondAttribute="trailing" id="6sT-PR-Bfz"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="rQl-gt-i4i" secondAttribute="leading" id="C2x-dz-YgU"/>
+                            <constraint firstItem="rQl-gt-i4i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="JMg-tu-F6V"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rQl-gt-i4i" secondAttribute="bottom" constant="50" id="xu1-0V-g3c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pitch Perfect" id="nNP-I2-9Vj"/>
